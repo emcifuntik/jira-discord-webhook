@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  jira-discord-webhook:
+    pull_policy: build
+    restart: "always"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api
+    environment:
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - WEBHOOK_ROUTE_SECRET=${WEBHOOK_ROUTE_SECRET}
+      - PORT=${PORT}
